@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BiteBox | Campus Food</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="logo">🍔 BiteBox</div>
+
+        <button class="cart-button" onclick="toggleCart()">
+            🛒 Cart <span id="cart-count">0</span>
+        </button>
+    </header>
+
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="badge">🍴 Campus Food, Simplified</span>
+
+                <h1>
+                    Good food.<br>
+                    <span>Good mood.</span>
+                </h1>
+
+                <p>
+                    Discover delicious meals around your campus
+                    and order your favorites in seconds.
+                </p>
+
+                <a href="#menu" class="hero-button">
+                    Explore Menu →
+                </a>
+
+            </div>
+
+            <div class="hero-emoji">
+                🍕
+            </div>
+
+        </section>
+
+
+        <!-- MENU -->
+        <section id="menu" class="menu-section">
+
+            <div class="section-heading">
+                <div>
+                    <p class="small-title">OUR MENU</p>
+                    <h2>What are you craving?</h2>
+                </div>
+
+                <input
+                    type="text"
+                    id="search"
+                    placeholder="🔍 Search food..."
+                    oninput="searchFood()"
+                >
+            </div>
+
+
+            <!-- CATEGORIES -->
+            <div class="categories">
+
+                <button
+                    class="category active"
+                    onclick="filterFood('all', this)">
+                    All
+                </button>
+
+                <button
+                    class="category"
+                    onclick="filterFood('pizza', this)">
+                    🍕 Pizza
+                </button>
+
+                <button
+                    class="category"
+                    onclick="filterFood('burger', this)">
+                    🍔 Burgers
+                </button>
+
+                <button
+                    class="category"
+                    onclick="filterFood('drinks', this)">
+                    🥤 Drinks
+                </button>
+
+                <button
+                    class="category"
+                    onclick="filterFood('dessert', this)">
+                    🍰 Desserts
+                </button>
+
+            </div>
+
+
+            <!-- FOOD CARDS -->
+
+            <div id="food-container" class="food-grid">
+
+                <div class="food-card"
+                     data-category="pizza"
+                     data-name="Cheese Burst Pizza">
+
+                    <div class="food-image pizza">🍕</div>
+
+                    <div class="food-info">
+
+                        <span class="food-category">PIZZA</span>
+
+                        <h3>Cheese Burst Pizza</h3>
+
+                        <p>Loaded with mozzarella and herbs.</p>
+
+                        <div class="food-bottom">
+
+                            <strong>₹199</strong>
+
+                            <button
+                                onclick="addToCart('Cheese Burst Pizza', 199)">
+                                + Add
+                            </button>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="food-card"
+                     data-category="pizza"
+                     data-name="Farmhouse Pizza">
+
+                    <div class="food-image pizza">🍕</div>
+
+                    <div class="food-info">
+
+                        <span class="food-category">PIZZA</span>
+
+                        <h3>Farmhouse Pizza</h3>
+
+                        <p>Fresh vegetables and creamy cheese.</p>
+
+                        <div class="food-bottom">
+
+                            <strong>₹229</strong>
+
+                            <button
+                                onclick="addToCart('Farmhouse Pizza', 229)">
+                                + Add
+                            </button>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="food-card"
+                     data-category="burger"
+                     data-name="Classic Chicken Burger">
+
+                    <div class="food-image burger">🍔</div>
+
+                    <div class="food-info">
+
+                        <span class="food-category">BURGER</span>
+
+                        <h3>Classic Chicken Burger</h3>
+
+                        <p>Crispy chicken with fresh vegetables.</p>
+
+                        <div class="food-bottom">
+
+                            <strong>₹149</strong>
+
+                            <button
+                                onclick="addToCart('Classic Chicken Burger', 149)">
+                                + Add
+                            </button>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="food-card"
+                     data-category="burger"
+                     data-name="Cheese Burger">
+
+                    <div class="food-image burger">🍔</div>
+
+                    <div class="food-info">
+
+                        <span class="food-category">BURGER</span>
+
+                        <h3>Cheese Burger</h3>
+
+                        <p>Juicy patty with melted cheese.</p>
+
+                        <div class="food-bottom">
+
+                            <strong>₹169</strong>
+
+                            <button
+                                onclick="addToCart('Cheese Burger', 169)">
+                                + Add
+                            </button>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="food-card"
+                     data-category="drinks"
+                     data-name="Cold Coffee">
+
+                    <div class="food-image drink">🥤</div>
+
+                    <div class="food-info">
+
+                        <span class="food-category">DRINK</span>
+
+                        <h3>Cold Coffee</h3>
+
+                        <p>Creamy chilled coffee.</p>
+
+                        <div class="food-bottom">
+
+                            <strong>₹99</strong>
+
+                            <button
+                                onclick="addToCart('Cold Coffee', 99)">
+                                + Add
+                            </button>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="food-card"
+                     data-category="drinks"
+                     data-name="Fresh Lime Soda">
+
+                    <div class="food-image drink">🍋</div>
+
+                    <div class="food-info">
+
+                        <span class="food-category">DRINK</span>
+
+                        <h3>Fresh Lime Soda</h3>
+
+                        <p>Refreshing lemon soda.</p>
+
+                        <div class="food-bottom">
+
+                            <strong>₹79</strong>
+
+                            <button
+                                onclick="addToCart('Fresh Lime Soda', 79)">
+                                + Add
+                            </button>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="food-card"
+                     data-category="dessert"
+                     data-name="Chocolate Brownie">
+
+                    <div class="food-image dessert">🍫</div>
+
+                    <div class="food-info">
+
+                        <span class="food-category">DESSERT</span>
+
+                        <h3>Chocolate Brownie</h3>
+
+                        <p>Warm chocolate brownie.</p>
+
+                        <div class="food-bottom">
+
+                            <strong>₹119</strong>
+
+                            <button
+                                onclick="addToCart('Chocolate Brownie', 119)">
+                                + Add
+                            </button>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="food-card"
+                     data-category="dessert"
+                     data-name="Strawberry Cake">
+
+                    <div class="food-image dessert">🍰</div>
+
+                    <div class="food-info">
+
+                        <span class="food-category">DESSERT</span>
+
+                        <h3>Strawberry Cake</h3>
+
+                        <p>Soft cake with strawberry cream.</p>
+
+                        <div class="food-bottom">
+
+                            <strong>₹139</strong>
+
+                            <button
+                                onclick="addToCart('Strawberry Cake', 139)">
+                                + Add
+                            </button>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- CART -->
+
+    <div id="cart-overlay" class="cart-overlay">
+
+        <div class="cart">
+
+            <div class="cart-header">
+
+                <h2>Your Cart</h2>
+
+                <button onclick="toggleCart()">✕</button>
+
+            </div>
+
+            <div id="cart-items"></div>
+
+            <div class="cart-footer">
+
+                <div class="total">
+                    <span>Total</span>
+                    <strong>₹<span id="cart-total">0</span></strong>
+                </div>
+
+                <button
+                    class="checkout"
+                    onclick="checkout()">
+                    Place Order
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <footer>
+
+        <p>© 2026 BiteBox</p>
+
+        <p>Made with ❤️ for campus food lovers</p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
