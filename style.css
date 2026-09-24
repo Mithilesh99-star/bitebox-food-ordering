@@ -649,3 +649,134 @@ footer {
         gap: 8px;
     }
 }
+/* ================= SMOOTH ANIMATIONS ================= */
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+button,
+a,
+.food-card,
+.category,
+.cart-button,
+.hero-button,
+.food-bottom button,
+.cart-header button,
+.quantity-controls button,
+#search {
+    transition:
+        transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.3s ease,
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease,
+        opacity 0.3s ease;
+}
+
+/* Food cards */
+.food-card {
+    will-change: transform;
+}
+
+.food-card:hover {
+    transform: translateY(-8px) scale(1.01);
+}
+
+/* Food image gently zooms when hovering */
+.food-card:hover .food-image {
+    transform: scale(1.04);
+}
+
+.food-image {
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Buttons */
+.hero-button:hover,
+.cart-button:hover {
+    transform: translateY(-3px) scale(1.02);
+}
+
+.food-bottom button:hover {
+    transform: translateY(-2px) scale(1.04);
+}
+
+.category:hover {
+    transform: translateY(-2px);
+}
+
+/* Button press effect */
+button:active {
+    transform: scale(0.96);
+}
+
+/* Search focus */
+#search {
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+#search:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(60, 35, 20, 0.08);
+}
+
+/* Cart overlay fade */
+.cart-overlay {
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.cart-overlay.open {
+    opacity: 1;
+}
+
+/* Cart smoother entrance */
+.cart {
+    animation: cartSlideIn 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes cartSlideIn {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Hero food floating more naturally */
+.hero-emoji {
+    animation: smoothFloat 5s ease-in-out infinite;
+}
+
+@keyframes smoothFloat {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateY(-14px) rotate(2deg);
+    }
+}
+
+/* Respect users who disable animations */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
